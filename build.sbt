@@ -1,6 +1,6 @@
 import scalariform.formatter.preferences._
 
-scalaVersion := "2.13.10"
+scalaVersion := "2.13.12"
 
 scalacOptions ++= Seq(
 	"-Xsource:3",                        // Forward source compatibility with Scala 3
@@ -41,5 +41,6 @@ scalariformPreferences := scalariformPreferences.value
 	.setPreference(IndentWithTabs, true)
 	.setPreference(DanglingCloseParenthesis, Preserve)
 	.setPreference(DoubleIndentConstructorArguments, true)
+	.setPreference(SingleCasePatternOnNewline, false)
 
 libraryDependencies += "org.scala-lang.modules" %% "scala-parallel-collections" % "1.0.4"

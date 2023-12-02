@@ -1,23 +1,22 @@
 package aoc
 
+import scala.annotation.unused
 import scala.util.Try
 
-object utils {
+package object utils {
 
-	private val green: String = "\u001B[38;5;118m"
-	private val gray: String = "\u001B[38;5;60m"
-	private val reset: String = Console.RESET
+	@inline def ignore[A](@unused a: A): Unit = ()
 
 	@inline def measure[A](label: String)(block: => A): A = {
 		val start = System.nanoTime
 		val res = block
 		val end = System.nanoTime
-		println(s"$gray[%s: %5.6f ms]$reset".format(label, BigDecimal(end - start) / 1000000))
+		println(s"${Colors.gray}[%s: %5.6f ms]${Colors.reset}".format(label, BigDecimal(end - start) / 1000000))
 		res
 	}
 
 	@inline def submit(num: Int, result: Any): Unit = {
-		println(s"$num. $green$result$reset")
+		println(s"$num. ${Colors.green}$result${Colors.reset}")
 	}
 
 	def words(s: String): List[String] = s.split("\\s+").toList
