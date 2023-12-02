@@ -1,15 +1,8 @@
 package aoc2022
 
-import aoc.utils.submit
+import aoc.utils._
 
 class Day09(input: List[String]) {
-
-	case class Vec(x: Int, y: Int) {
-		def +(p: Vec): Vec = Vec(x + p.x, y + p.y)
-		def -(p: Vec): Vec = Vec(x - p.x, y - p.y)
-		def isNextTo(p: Vec): Boolean = math.abs(x - p.x) <= 1 && math.abs(y - p.y) <= 1
-		def signum: Vec = Vec(x = math.signum(x), y = math.signum(y))
-	}
 
 	case class Rope(knots: List[Vec], trail: Set[Vec]) {
 		def runWith(steps: List[Vec]): Rope = steps.foldLeft(this) { (acc, step) =>
